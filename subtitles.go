@@ -93,6 +93,8 @@ func Open(o Options) (s *Subtitles, err error) {
 		s, err = ReadFromTTML(f)
 	case ".vtt":
 		s, err = ReadFromWebVTT(f)
+	case ".scc":
+		s, err = ReadFromSCC(f)
 	default:
 		err = ErrInvalidExtension
 	}
@@ -1141,6 +1143,8 @@ func (s Subtitles) Write(dst string) (err error) {
 		err = s.WriteToTTML(f)
 	case ".vtt":
 		err = s.WriteToWebVTT(f)
+	case ".scc":
+		err = s.WriteToSCC(f)
 	default:
 		err = ErrInvalidExtension
 	}
